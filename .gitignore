@@ -1,0 +1,22 @@
+# Composer dependencies
+/vendor/
+
+# Environment configuration files
+.env
+.env.*
+!.env.example
+
+# Log files
+*.log
+logs/
+
+# Temporary files / OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE / Editor specific files
+.idea/
+.vscode/
+
+# Your specific config file (IMPORTANT!)
+config.php
