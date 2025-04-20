@@ -1,0 +1,604 @@
+/* Global Reset & Base */
+body, h1, h2, p, ul, li, form, input, select, button, label, span, div, section, header, main, footer, nav, a, img, i, small {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+    font-family: 'Poppins', Arial, sans-serif; 
+}
+
+body {
+    background-color: #f4f7f6; /* Use a consistent light background for all pages */
+    color: #333;
+    line-height: 1.6;
+    padding-top: 70px; /* Space for fixed header */
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto; 
+}
+
+/* Header */
+.site-header {
+    background-color: #ffffff; 
+    padding: 10px 0; 
+    border-bottom: 1px solid #e7e7e7;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; 
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+}
+
+.logo a {
+    font-family: 'Pacifico', cursive; 
+    font-weight: 400; 
+    color: #4CAF50; 
+    font-size: 1.8em; 
+    text-decoration: none;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0; /* Reset margin */
+}
+
+.main-nav li {
+    margin-left: 15px; 
+    margin-right: 15px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 500; 
+    transition: color 0.3s ease;
+}
+.main-nav a:hover {
+    color: #28a745; 
+}
+
+.account-nav {
+    position: relative; 
+    display: flex; 
+    align-items: center;
+}
+
+.account-nav a, .account-nav button {
+    margin-left: 15px;
+    text-decoration: none;
+}
+
+/* Buttons */
+.btn {
+    padding: 8px 18px; 
+    border-radius: 20px; 
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.btn-signup {
+    background-color: #28a745;
+    color: #fff;
+    border: 1px solid #28a745;
+}
+.btn-signup:hover {
+    background-color: #218838; 
+    border-color: #218838;
+    transform: translateY(-1px);
+}
+
+.signin-link {
+    color: #555;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+.signin-link:hover {
+    color: #28a745;
+}
+
+ .user-menu-btn {
+     background: none;
+     border: none; 
+     padding: 5px;
+     font-size: 1.4em; 
+     color: #555;
+     cursor: pointer;
+ }
+ .user-menu-btn:hover {
+     color: #28a745;
+ }
+ 
+ .user-menu-dropdown {
+     display: none; 
+     position: absolute;
+     right: 0;
+     top: 120%; 
+     background-color: white;
+     border: 1px solid #eee;
+     border-radius: 8px;
+     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+     min-width: 200px; 
+     z-index: 1001; 
+ } 
+ 
+ .user-menu-dropdown.show-menu {
+     display: block; 
+ }
+ 
+ .user-menu-dropdown .user-info {
+     display: flex;
+     align-items: center;
+     padding: 12px 15px;
+     border-bottom: 1px solid #f0f0f0;
+ }
+ 
+ .user-menu-dropdown .pfp {
+     width: 40px;
+     height: 40px;
+     border-radius: 50%; 
+     margin-right: 10px;
+     object-fit: cover; 
+     background-color: #eee; 
+ }
+ .user-menu-dropdown .user-info span {
+     font-weight: 600;
+     color: #333;
+     font-size: 0.95em;
+ }
+ 
+ .user-menu-dropdown ul {
+     list-style: none;
+     padding: 5px 0;
+     margin: 0;
+ }
+ 
+ .user-menu-dropdown li a {
+     display: flex; 
+     align-items: center;
+     padding: 10px 15px;
+     color: #555; 
+     text-decoration: none;
+     font-size: 0.9em;
+     transition: background-color 0.2s ease, color 0.2s ease;
+ }
+ 
+ .user-menu-dropdown li a i {
+     margin-right: 10px; 
+     width: 16px; 
+     text-align: center;
+     color: #999; 
+ }
+ 
+ .user-menu-dropdown li a:hover {
+     background-color: #e8f5e9; 
+     color: #28a745; 
+ }
+ .user-menu-dropdown li a:hover i {
+     color: #28a745; 
+ }
+
+/* Main Content Area */
+.main-content {
+    padding: 40px 0; 
+    min-height: calc(100vh - 150px); 
+}
+
+.main-content > .container > h1 { 
+    text-align: center;
+    font-size: 2.2em;
+    margin-bottom: 40px;
+    color: #333;
+    font-weight: 600;
+}
+
+/* General Form Container Styling */
+.form-container, .meal-planner-form {
+    max-width: 550px; /* Consistent max width */
+    margin: 30px auto; 
+    background-color: #ffffff; 
+    padding: 35px 45px; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07); 
+    border: 1px solid #e8e8e8; 
+}
+
+.form-container h2, .meal-planner-form h2 {
+    text-align: center;
+    margin-bottom: 25px; 
+    color: #28a745; 
+    font-size: 1.6em;
+    font-weight: 600;
+    display: flex; /* For icons in titles */
+    align-items: center;
+    justify-content: center;
+}
+.form-container h2 i, .meal-planner-form h2 i {
+    margin-right: 10px;
+    font-size: 0.9em;
+}
+
+.step-description { /* Used in register steps */
+    text-align: center;
+    margin-bottom: 25px;
+    color: #555;
+    font-size: 1em;
+}
+
+/* General Form Elements */
+.form-group {
+    margin-bottom: 20px; 
+}
+
+.form-group label, .input-group label {
+    display: block; 
+    margin-bottom: 7px; 
+    font-weight: 600; 
+    color: #444;
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+}
+.form-group label i, .input-group label i { /* Icons in labels */
+    margin-right: 6px;
+    color: #999; 
+    width: 16px;
+    text-align: center;
+}
+/* Special label alignment for homepage goal inputs */
+.goal-inputs-enhanced .input-group label {
+     display: inline-block; /* Allow side-by-side */
+     margin-bottom: 0;
+     margin-left: 5px;
+     margin-right: 5px;
+     font-weight: 400; /* Lighter weight */
+     color: #555;
+}
+
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+select {
+    width: 100%; 
+    padding: 10px 12px; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em; 
+    font-family: 'Poppins', Arial, sans-serif; 
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus,
+select:focus {
+    border-color: #28a745; 
+    outline: none; 
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.2); 
+}
+
+select {
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: white;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23aaaaaa%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 10px auto;
+}
+select:required:invalid {
+  color: #666;
+}
+option[value=""][disabled] {
+   color: #999; 
+}
+option {
+  color: #333; 
+}
+
+.password-wrapper {
+    position: relative; 
+}
+.password-toggle-btn {
+    position: absolute;
+    top: 50%;
+    right: 1px; 
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #aaa;
+    padding: 0 10px; 
+    height: 100%; 
+    display: flex;
+    align-items: center;
+}
+.password-toggle-btn:hover {
+    color: #28a745;
+}
+input[type="password"] {
+    padding-right: 40px; 
+}
+
+.btn-primary { 
+    background-color: #28a745; 
+    color: white;
+    border: none;
+}
+.btn-primary:hover { 
+    background-color: #218838; 
+}
+.btn-full-width { 
+    display: block; 
+    width: 100%;   
+    padding: 11px; 
+    font-size: 1.05em;
+    font-weight: 600;
+    margin-top: 15px;
+    border-radius: 4px; /* Match inputs */
+}
+.btn-full-width i {
+    margin-left: 6px;
+}
+
+.form-footer-link { 
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.9em;
+}
+.form-footer-link a { 
+    color: #28a745; 
+    text-decoration: none;
+    font-weight: 600;
+}
+.form-footer-link a:hover { 
+    text-decoration: underline;
+}
+
+.message {
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 500; 
+    font-size: 0.95em;
+}
+.message.error { 
+    color: #721c24; 
+    background-color: #f8d7da; 
+    border: 1px solid #f5c6cb; 
+}
+.message.success { 
+    color: #155724; 
+    background-color: #d4edda; 
+    border: 1px solid #c3e6cb; 
+}
+.login-message { 
+     margin-top: -10px; /* Adjust for login/register page */
+     margin-bottom: 20px;
+}
+
+/* Confirmation Page */
+.confirmation-container {
+    text-align: center; 
+}
+.confirmation-container .message {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: none;
+}
+.confirmation-container .form-footer-link {
+    margin-top: 20px; 
+}
+.confirmation-container .btn-primary { /* Style login button */
+     display: inline-block; /* Make it inline */
+     width: auto; /* Auto width */
+     padding-left: 30px;
+     padding-right: 30px;
+}
+
+/* Diet/Exclusion Options (Simplified Grid) */
+.diet-options-grid, .checkbox-options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); 
+    gap: 12px; 
+    margin-top: 15px;
+}
+
+.diet-option input[type="radio"],
+.checkbox-option input[type="checkbox"] {
+    display: none; 
+}
+
+.diet-option label,
+.checkbox-option label {
+    display: flex;
+    align-items: center; 
+    padding: 12px 15px; 
+    background-color: #ffffff; 
+    border: 1px solid #ddd; 
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    font-size: 0.95em;
+    position: relative;
+}
+.diet-option label .icon,
+.checkbox-option label .icon {
+    font-size: 1.3em; 
+    margin-right: 8px; 
+    width: 20px; 
+    text-align: center;
+    color: #555; 
+}
+.diet-option label small { 
+     font-size: 0.8em;
+     color: #777;
+     margin-left: 5px; 
+     display: block; 
+     line-height: 1.2; /* Adjust line height */
+}
+.diet-option label .diet-name {
+    font-weight: 500; 
+}
+
+.diet-option label:hover,
+.checkbox-option label:hover {
+    border-color: #a5d6a7; 
+    background-color: #fafffa; 
+}
+
+.diet-option input[type="radio"]:checked + label,
+.checkbox-option input[type="checkbox"]:checked + label {
+    background-color: #e8f5e9; 
+    border-color: #28a745; 
+    color: #218838; 
+    font-weight: 600;
+}
+.diet-option input[type="radio"]:checked + label .icon,
+.checkbox-option input[type="checkbox"]:checked + label .icon {
+    color: #28a745; 
+}
+
+.checkbox-option input[type="checkbox"]:checked + label::after {
+    content: '\f00c'; 
+    font-family: 'Font Awesome 6 Free'; 
+    font-weight: 900; 
+    color: #28a745; 
+    margin-left: auto; 
+    padding-left: 10px;
+    font-size: 1em; 
+}
+
+/* Homepage Specific Form Styles */
+.meal-planner-form {
+    max-width: 750px; 
+    margin: 40px auto 0 auto; 
+    padding: 35px 45px; 
+    background-color: #ffffff; 
+    border-radius: 10px; 
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.07); 
+    text-align: left; 
+    border: 1px solid #eee;
+}
+.meal-planner-form .form-section-title {
+    font-size: 1.4em; 
+    margin-bottom: 25px;
+}
+.meal-planner-form .diet-options { /* Use simple grid */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); 
+    gap: 15px; 
+}
+.meal-planner-form .diet-option label { /* Simpler homepage diet options */
+    flex-direction: column; 
+    justify-content: center; 
+    padding: 15px 10px; 
+    min-height: 100px; 
+    border-radius: 8px; 
+    border: 1px solid #ddd;
+}
+.meal-planner-form .diet-option .icon {
+     font-size: 2.2em; 
+     margin-bottom: 8px;
+}
+.meal-planner-form .diet-option .diet-name {
+    font-weight: 600; 
+    font-size: 0.9em;
+}
+.meal-planner-form .diet-option label:hover {
+    transform: translateY(-3px); 
+    box-shadow: 0 5px 10px rgba(40, 167, 69, 0.1); 
+    border-color: #a5d6a7; 
+}
+.meal-planner-form .diet-option input[type="radio"]:checked + label {
+    border-color: #4CAF50; 
+    background-color: #e8f5e9; 
+    transform: scale(1.02); 
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.15);
+}
+
+.goal-inputs-enhanced .input-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px; 
+    align-items: center;
+    background-color: #f9f9f9; 
+    padding: 15px;
+    border-radius: 8px;
+    flex-wrap: wrap; /* Allow wrapping */
+}
+.goal-inputs-enhanced .input-group {
+    display: flex; /* Align label/input better */
+    align-items: center;
+}
+.goal-inputs-enhanced .input-group label {
+    margin-bottom: 0; /* Remove bottom margin */
+}
+.goal-inputs-enhanced .input-group input, 
+.goal-inputs-enhanced .input-group select {
+    padding: 9px 10px; 
+    margin: 0 4px; 
+    width: 90px; 
+    font-size: 1.1em; 
+}
+
+.macro-inputs-optional {
+     display: none; /* Hide this section based on previous request */
+}
+
+.btn-generate-enhanced {
+    background: linear-gradient(to right, #ff7e5f, #ff6a4f); 
+    color: white;
+    padding: 14px 35px; 
+    font-size: 1.2em;
+    font-weight: 600;
+    border: none;
+    border-radius: 25px; 
+    box-shadow: 0 4px 15px rgba(255, 126, 95, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: inline-block;
+    width: auto;
+    margin-top: 10px; 
+}
+.btn-generate-enhanced:hover {
+    background: linear-gradient(to right, #ff6a4f, #ff7e5f); 
+    box-shadow: 0 7px 20px rgba(255, 126, 95, 0.4);
+    transform: translateY(-2px);
+}
+.btn-generate-enhanced:active {
+     transform: translateY(0);
+     box-shadow: 0 3px 10px rgba(255, 126, 95, 0.3);
+}
+.btn-generate-enhanced i {
+    margin-right: 8px;
+    font-size: 0.9em; 
+}
+
+.site-footer-main {
+    background-color: #f8f9fa; 
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 50px; 
+    font-size: 0.9em;
+    color: #777;
+    border-top: 1px solid #e7e7e7;
+}

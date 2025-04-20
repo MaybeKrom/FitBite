@@ -2,6 +2,10 @@
 session_start();
 include 'config.php'; 
 
+if (!isset($conn) || $conn->connect_error) {
+    die("Database configuration error. Cannot complete registration."); 
+}
+
 $required_keys = [
     'register_step1_name',
     'register_step1_email',
@@ -30,7 +34,7 @@ if (!$all_keys_present) {
 
 $name = $_SESSION['register_step1_name'];
 $email = $_SESSION['register_step1_email'];
-$hashed_password = $_SESSION['register_step1_hashed_password'];
+$hashed_password = $_SESSION['register_step1_hashed_password']; 
 $diet = $_SESSION['register_step2_diet'];
 $food_exclusions = $_SESSION['register_step3_exclusions']; 
 $gender = $_SESSION['register_step4_gender'];
@@ -50,41 +54,64 @@ $age_sql = (int)$age;
 $height_sql = (float)$height;
 $weight_sql = (float)$weight;
 
+$message = ''; 
+$success = false; 
+
 $sql = "INSERT INTO users (name, email, password, gender, age, weight, height, diet, food_exclusions, activity)
         VALUES ('{$name_sql}', '{$email_sql}', '{$hashed_password_sql}', '{$gender_sql}', 
                 {$age_sql}, {$weight_sql}, {$height_sql}, 
                 '{$diet_sql}', '{$food_exclusions_sql}', '{$activity_sql}')";
 
 if ($conn->query($sql) === TRUE) {
-    $message = "Registration Completed! <a href='login.php'>Login Here</a>";
-
+    $message = "Registration Completed! You can now login."; 
+    $success = true;
     session_destroy(); 
 } else {
-    $message = "Error: " . $conn->error; 
-    if ($conn->errno == 1062) {
-         $message = "Error: This email address is already registered. Please <a href='login.php'>login</a> or use a different email.";
+    if ($conn->errno == 1062) { 
+         $message = "Error: This email address is already registered. Please use a different email or login.";
+    } else {
+         $message = "Error: Could not complete registration due to a database issue (" . $conn->errno.")"; // Added error number hint
     }
+    $success = false;
 }
-$conn->close();
+
+$conn->close(); 
 
 ?>
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Confirmation</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<h2>Registration Status</h2>
+<div class="container confirmation-container"> 
 
-<?php 
-if (!empty($message)) {
-    echo "<p>" . $message . "</p>";
-} else {
-    echo "<p>An unexpected error occurred processing your registration.</p>"; 
-}
-?>
+    <h2>Registration Status</h2>
+
+    <?php 
+    if (!empty($message)) {
+        $message_class = $success ? 'success' : 'error'; 
+        echo '<p class="message ' . $message_class . '">' . htmlspecialchars($message) . '</p>'; 
+
+        if ($success) {
+            echo '<div class="form-footer-link"><a href="login.php" class="btn btn-primary">Login Here</a></div>'; // Styled button
+        } else {
+             echo '<div class="form-footer-link"><a href="register.php">Try Registration Again</a></div>';
+        }
+
+    } else {
+        echo '<p class="message error">An unexpected error occurred.</p>'; 
+    }
+    ?>
+
+</div> 
 
 </body>
 </html>
