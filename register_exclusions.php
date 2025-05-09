@@ -8,7 +8,7 @@ if (!isset($_SESSION['register_step1_email']) || !isset($_SESSION['register_step
 }
 
 $allowed_exclusions = ['gluten', 'peanuts', 'eggs', 'fish', 'dairy', 'soy', 'shellfish'];
-$submitted_exclusions_post = $_POST['exclusions'] ?? []; // Store POST data for repopulation
+$submitted_exclusions_post = $_POST['exclusions'] ?? []; 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $_SESSION['register_step3_exclusions'] = $exclusions_string;
     
-    header("Location: register_body.php"); 
+    header("Location: register_confirm.php"); //MODIFIED HERE
     exit(); 
 }
 ?>
@@ -119,7 +119,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
         <div class="form-section submit-section" style="margin-top: 30px;">
-            <button type="submit" class="btn btn-primary btn-full-width">Next Step <i class="fas fa-arrow-right"></i></button>
+            <button type="submit" class="btn btn-primary btn-full-width">Next: Confirm Registration <i class="fas fa-arrow-right"></i></button>
         </div>
 
     </form>

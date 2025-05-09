@@ -20,14 +20,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         
         $email_sql = $conn->real_escape_string($email);
-        $sql = "SELECT id, name, password FROM users WHERE email = '{$email_sql}'";
+        $sql = "SELECT id, name, password, role FROM users WHERE email = '{$email_sql}'"; 
+        
         $result = $conn->query($sql);
 
         if ($result && $result->num_rows === 1) {
             $user = $result->fetch_assoc();
+            
             if (password_verify($password, $user['password'])) {
+                
                 $_SESSION['user_id'] = $user['id']; 
                 $_SESSION['user_name'] = $user['name']; 
+                $_SESSION['user_role'] = $user['role']; 
+                
                 header("Location: index.php"); 
                 exit();
             } else {
@@ -36,10 +41,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             $message = "Invalid email or password."; 
         }
-         if($result) $result->free(); // Free result memory
-         // Note: Prepared statement code removed as requested
+         if($result) $result->free();
+         $conn->close(); 
     }
-    // $conn->close(); // Optional: Close connection if script ends here
 }
 ?>
 <!DOCTYPE html>
@@ -67,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     ?>
 
-    <form class="login-form" method="POST" action="">
+    <form class="login-form" method="POST" action="login.php">
         
         <div class="form-group"> 
             <label for="email"><i class="fas fa-envelope"></i> Email</label>
@@ -81,10 +85,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="button" id="togglePassword" class="password-toggle-btn">
                 <i class="fas fa-eye"></i>
             </button>
-        </div>
-
-        <div class="form-options" style="text-align: right; margin-bottom: 15px;">
-            <a href="forgot_password.php" class="forgot-password-link">Forgot Password?</a>
         </div>
 
         <button type="submit" class="btn btn-primary btn-full-width">Login</button> 

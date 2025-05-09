@@ -1,5 +1,4 @@
-/* Global Reset & Base */
-body, h1, h2, p, ul, li, form, input, select, button, label, span, div, section, header, main, footer, nav, a, img, i, small {
+body, h1, h2, p, ul, li, form, input, select, button, label, span, div, section, header, main, footer, nav, a, img, i, small, table, thead, tbody, tr, th, td, textarea {
     margin: 0;
     padding: 0;
     box-sizing: border-box; 
@@ -7,10 +6,10 @@ body, h1, h2, p, ul, li, form, input, select, button, label, span, div, section,
 }
 
 body {
-    background-color: #f4f7f6; /* Use a consistent light background for all pages */
+    background-color: #f4f7f6; 
     color: #333;
     line-height: 1.6;
-    padding-top: 70px; /* Space for fixed header */
+    padding-top: 70px; 
 }
 
 .container {
@@ -19,7 +18,6 @@ body {
     margin: 0 auto; 
 }
 
-/* Header */
 .site-header {
     background-color: #ffffff; 
     padding: 10px 0; 
@@ -50,7 +48,7 @@ body {
     list-style: none;
     display: flex;
     padding: 0;
-    margin: 0; /* Reset margin */
+    margin: 0; 
 }
 
 .main-nav li {
@@ -79,7 +77,6 @@ body {
     text-decoration: none;
 }
 
-/* Buttons */
 .btn {
     padding: 8px 18px; 
     border-radius: 20px; 
@@ -100,7 +97,6 @@ body {
 .btn-signup:hover {
     background-color: #218838; 
     border-color: #218838;
-    transform: translateY(-1px);
 }
 
 .signin-link {
@@ -193,7 +189,6 @@ body {
      color: #28a745; 
  }
 
-/* Main Content Area */
 .main-content {
     padding: 40px 0; 
     min-height: calc(100vh - 150px); 
@@ -207,12 +202,11 @@ body {
     font-weight: 600;
 }
 
-/* General Form Container Styling */
 .form-container, .meal-planner-form {
-    max-width: 550px; /* Consistent max width */
+    max-width: 600px; 
     margin: 30px auto; 
     background-color: #ffffff; 
-    padding: 35px 45px; 
+    padding: 30px 40px; 
     border-radius: 8px; 
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07); 
     border: 1px solid #e8e8e8; 
@@ -224,7 +218,7 @@ body {
     color: #28a745; 
     font-size: 1.6em;
     font-weight: 600;
-    display: flex; /* For icons in titles */
+    display: flex; 
     align-items: center;
     justify-content: center;
 }
@@ -233,14 +227,13 @@ body {
     font-size: 0.9em;
 }
 
-.step-description { /* Used in register steps */
+.step-description { 
     text-align: center;
     margin-bottom: 25px;
     color: #555;
     font-size: 1em;
 }
 
-/* General Form Elements */
 .form-group {
     margin-bottom: 20px; 
 }
@@ -254,28 +247,20 @@ body {
     display: flex;
     align-items: center;
 }
-.form-group label i, .input-group label i { /* Icons in labels */
+.form-group label i, .input-group label i { 
     margin-right: 6px;
     color: #999; 
     width: 16px;
     text-align: center;
 }
-/* Special label alignment for homepage goal inputs */
-.goal-inputs-enhanced .input-group label {
-     display: inline-block; /* Allow side-by-side */
-     margin-bottom: 0;
-     margin-left: 5px;
-     margin-right: 5px;
-     font-weight: 400; /* Lighter weight */
-     color: #555;
-}
-
 
 input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="number"],
-select {
+input[type="search"], 
+select,
+textarea { 
     width: 100%; 
     padding: 10px 12px; 
     border: 1px solid #ccc;
@@ -284,9 +269,14 @@ select {
     font-family: 'Poppins', Arial, sans-serif; 
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
+textarea {
+     min-height: 80px; 
+     resize: vertical; 
+}
 
 input:focus,
-select:focus {
+select:focus,
+textarea:focus {
     border-color: #28a745; 
     outline: none; 
     box-shadow: 0 0 5px rgba(40, 167, 69, 0.2); 
@@ -352,10 +342,28 @@ input[type="password"] {
     font-size: 1.05em;
     font-weight: 600;
     margin-top: 15px;
-    border-radius: 4px; /* Match inputs */
+    border-radius: 4px; 
 }
 .btn-full-width i {
     margin-left: 6px;
+}
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: 1px solid #dc3545;
+}
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+    transform: translateY(-1px);
+}
+.btn-small {
+    padding: 4px 8px; 
+    font-size: 0.85em; 
+    border-radius: 3px;
+}
+.btn-small i {
+    margin-right: 4px;
 }
 
 .form-footer-link { 
@@ -391,11 +399,10 @@ input[type="password"] {
     border: 1px solid #c3e6cb; 
 }
 .login-message { 
-     margin-top: -10px; /* Adjust for login/register page */
+     margin-top: -10px; 
      margin-bottom: 20px;
 }
 
-/* Confirmation Page */
 .confirmation-container {
     text-align: center; 
 }
@@ -407,17 +414,25 @@ input[type="password"] {
 .confirmation-container .form-footer-link {
     margin-top: 20px; 
 }
-.confirmation-container .btn-primary { /* Style login button */
-     display: inline-block; /* Make it inline */
-     width: auto; /* Auto width */
+.confirmation-container .btn-primary { 
+     display: inline-block; 
+     width: auto; 
      padding-left: 30px;
      padding-right: 30px;
 }
 
-/* Diet/Exclusion Options (Simplified Grid) */
+.form-group small { 
+    display: block;
+    margin-top: 5px;
+    font-size: 0.85em;
+    color: #777;
+    text-align: left;
+}
+
+
 .diet-options-grid, .checkbox-options-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
     gap: 12px; 
     margin-top: 15px;
 }
@@ -431,29 +446,25 @@ input[type="password"] {
 .checkbox-option label {
     display: flex;
     align-items: center; 
-    padding: 12px 15px; 
+    padding: 10px 12px;
     background-color: #ffffff; 
     border: 1px solid #ddd; 
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
-    font-size: 0.95em;
+    font-size: 0.9em; 
     position: relative;
 }
 .diet-option label .icon,
 .checkbox-option label .icon {
-    font-size: 1.3em; 
+    font-size: 1.2em; 
     margin-right: 8px; 
     width: 20px; 
     text-align: center;
     color: #555; 
 }
 .diet-option label small { 
-     font-size: 0.8em;
-     color: #777;
-     margin-left: 5px; 
-     display: block; 
-     line-height: 1.2; /* Adjust line height */
+     display: none; 
 }
 .diet-option label .diet-name {
     font-weight: 500; 
@@ -487,41 +498,29 @@ input[type="password"] {
     font-size: 1em; 
 }
 
-/* Homepage Specific Form Styles */
-.meal-planner-form {
-    max-width: 750px; 
-    margin: 40px auto 0 auto; 
-    padding: 35px 45px; 
-    background-color: #ffffff; 
-    border-radius: 10px; 
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.07); 
-    text-align: left; 
-    border: 1px solid #eee;
-}
 .meal-planner-form .form-section-title {
     font-size: 1.4em; 
     margin-bottom: 25px;
 }
-.meal-planner-form .diet-options { /* Use simple grid */
+.meal-planner-form .diet-options { 
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); 
-    gap: 15px; 
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 }
-.meal-planner-form .diet-option label { /* Simpler homepage diet options */
+.meal-planner-form .diet-option label { 
     flex-direction: column; 
     justify-content: center; 
-    padding: 15px 10px; 
-    min-height: 100px; 
+    padding: 12px 8px; 
+    min-height: 90px; 
     border-radius: 8px; 
     border: 1px solid #ddd;
 }
 .meal-planner-form .diet-option .icon {
-     font-size: 2.2em; 
-     margin-bottom: 8px;
+     font-size: 2em; 
+     margin-bottom: 5px;
 }
 .meal-planner-form .diet-option .diet-name {
     font-weight: 600; 
-    font-size: 0.9em;
+    font-size: 0.85em;
 }
 .meal-planner-form .diet-option label:hover {
     transform: translateY(-3px); 
@@ -538,41 +537,38 @@ input[type="password"] {
 .goal-inputs-enhanced .input-row {
     display: flex;
     justify-content: center;
-    gap: 20px; 
+    gap: 15px; 
     align-items: center;
     background-color: #f9f9f9; 
     padding: 15px;
     border-radius: 8px;
-    flex-wrap: wrap; /* Allow wrapping */
+    flex-wrap: wrap; 
 }
 .goal-inputs-enhanced .input-group {
-    display: flex; /* Align label/input better */
+    display: flex; 
     align-items: center;
 }
 .goal-inputs-enhanced .input-group label {
-    margin-bottom: 0; /* Remove bottom margin */
+    margin-bottom: 0; 
+    font-size: 0.95em;
 }
 .goal-inputs-enhanced .input-group input, 
 .goal-inputs-enhanced .input-group select {
-    padding: 9px 10px; 
+    padding: 8px 10px; 
     margin: 0 4px; 
-    width: 90px; 
-    font-size: 1.1em; 
-}
-
-.macro-inputs-optional {
-     display: none; /* Hide this section based on previous request */
+    width: 85px; 
+    font-size: 1em; 
 }
 
 .btn-generate-enhanced {
     background: linear-gradient(to right, #ff7e5f, #ff6a4f); 
     color: white;
-    padding: 14px 35px; 
-    font-size: 1.2em;
+    padding: 12px 30px; 
+    font-size: 1.1em;
     font-weight: 600;
     border: none;
     border-radius: 25px; 
-    box-shadow: 0 4px 15px rgba(255, 126, 95, 0.3);
+    box-shadow: 0 4px 12px rgba(255, 126, 95, 0.3);
     transition: all 0.3s ease;
     cursor: pointer;
     display: inline-block;
@@ -581,7 +577,7 @@ input[type="password"] {
 }
 .btn-generate-enhanced:hover {
     background: linear-gradient(to right, #ff6a4f, #ff7e5f); 
-    box-shadow: 0 7px 20px rgba(255, 126, 95, 0.4);
+    box-shadow: 0 6px 18px rgba(255, 126, 95, 0.4);
     transform: translateY(-2px);
 }
 .btn-generate-enhanced:active {
@@ -601,4 +597,260 @@ input[type="password"] {
     font-size: 0.9em;
     color: #777;
     border-top: 1px solid #e7e7e7;
+}
+
+.admin-section {
+    margin-bottom: 30px;
+    text-align: center;
+    background-color: #fff; 
+    padding: 20px; 
+    border-radius: 5px; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
+    border: 1px solid #eee; 
+}
+.admin-section h2 {
+   font-size: 1.3em;
+   margin-bottom: 10px;
+   color: #28a745;
+   text-align: left; 
+}
+ .admin-section p {
+   margin-bottom: 15px;
+   color: #555;
+    text-align: left; 
+}
+.admin-section .btn-primary {
+    width: auto; 
+    display: inline-block;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.user-management-container, .manage-food-container {
+    max-width: 900px; 
+}
+.manage-food-container {
+     max-width: 650px;
+}
+
+
+.user-list-table-wrapper {
+    overflow-x: auto; 
+}
+
+.user-list-table {
+    width: 100%;
+    border-collapse: collapse; 
+    margin-top: 20px;
+    font-size: 0.9em; 
+}
+
+.user-list-table th,
+.user-list-table td {
+    border: 1px solid #eee; 
+    padding: 8px 10px; 
+    text-align: left;
+    vertical-align: middle; 
+}
+
+.user-list-table th {
+    background-color: #f8f9fa; 
+    font-weight: 600;
+    color: #444;
+}
+
+.user-list-table tbody tr:nth-child(even) {
+    background-color: #fdfdfd; 
+}
+.user-list-table tbody tr:hover {
+    background-color: #f0f8ff; 
+}
+
+.pfp-small {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%; 
+    object-fit: cover;
+    display: block; 
+    margin: 0 auto; 
+}
+
+
+td .delete-form {
+    display: inline-block;
+    margin: 0;
+}
+
+
+.add-food-form textarea {
+    width: 100%; 
+    padding: 10px 12px; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em; 
+    font-family: 'Poppins', Arial, sans-serif; 
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    min-height: 80px; 
+    resize: vertical; 
+}
+.add-food-form textarea:focus {
+    border-color: #28a745; 
+    outline: none; 
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.2); 
+}
+
+.add-food-form input[type="file"] {
+    margin-top: 5px;
+    display: block; 
+    color: #555; 
+    font-size: 0.9em; 
+    padding: 8px 0;
+}
+
+
+.account-settings-container {
+     max-width: 650px; 
+}
+.profile-picture-section {
+    display: flex;
+    align-items: center; 
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #eee; 
+}
+.pfp-display {
+    width: 100px;
+    height: 100px;  
+    border-radius: 8px;
+    object-fit: cover; 
+    margin-right: 30px;
+    border: 3px solid #e8f5e9;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: block;     
+}
+.pfp-upload-form {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+}
+.pfp-upload-form label.btn { 
+    background-color: #f0f0f0; 
+    color: #555;
+    border: 1px solid #ccc;
+    padding: 8px 15px; 
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.9em;
+    display: inline-block; 
+    transition: background-color 0.2s ease;
+}
+.pfp-upload-form label.btn:hover {
+     background-color: #e5e5e5;
+}
+.pfp-upload-form button {
+    font-size: 0.9em; 
+    padding: 8px 15px; 
+    font-weight: 500;
+}
+.settings-divider {
+    border: none;
+    border-top: 1px solid #eee; 
+    margin: 30px 0; 
+}
+
+.delete-account-section {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 2px dashed #ffcdd2; 
+    text-align: center;
+}
+.delete-account-section h3 {
+    color: #dc3545;
+    margin-bottom: 10px;
+}
+.delete-account-section p {
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+.delete-account-section .btn-danger {
+     width: auto; 
+     padding-left: 30px;
+     padding-right: 30px;
+}
+.browse-food-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+    gap: 25px; 
+}
+
+.food-card {
+    background-color: #ffffff;
+    border-radius: 8px; 
+    overflow: hidden;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease; 
+    border: 1px solid #f0f0f0; 
+    display: flex; 
+}
+
+.food-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 15px rgba(40, 167, 69, 0.12); 
+}
+
+.food-card-image {
+    display: block;
+    width: 100%;        
+    height: 170px;    
+    object-fit: cover;  
+    background-color: #eee; 
+}
+
+.food-card-content {
+    padding: 15px;
+    flex-grow: 1; 
+    display: flex; 
+    flex-direction: column; 
+}
+
+.food-card-name {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px; 
+}
+
+.food-card-info {
+    display: flex;
+    justify-content: space-between; 
+    font-size: 0.9em;
+    color: #555;
+    border-top: 1px solid #f5f5f5; 
+    padding-top: 10px;
+    margin-top: auto; 
+}
+.food-card-info span {
+    display: flex;
+    align-items: center;
+}
+.food-card-info i {
+    margin-right: 5px;
+    color: #999;
+}
+
+.food-card-description { 
+    padding: 10px 0 0 0; 
+    margin-top: 10px;
+    border-top: 1px solid #f0f0f0; 
+    font-size: 0.85em; 
+    color: #555;
+    line-height: 1.5;
+}
+.food-card-description p {
+    margin-bottom: 5px;
+}
+.food-card-description strong {
+    color: #333;
 }

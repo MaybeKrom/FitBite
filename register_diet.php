@@ -6,9 +6,9 @@ if (!isset($_SESSION['register_step1_email'])) {
     exit();
 }
 
-$allowed_diets = ['anything', 'keto', 'paleo', 'vegan', 'vegetarian', 'mediterranean']; 
+$allowed_diets = ['anything', 'keto', 'vegan', 'mediterranean']; 
 $message = ''; 
-$selected_diet = $_POST['diet'] ?? null; // For repopulating
+$selected_diet = $_POST['diet'] ?? null; 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
@@ -66,20 +66,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </label>
             </div>
 
-             <div class="diet-option">
+            <div class="diet-option">
                  <input type="radio" name="diet" value="mediterranean" id="diet-med" required <?php echo ($selected_diet === 'mediterranean') ? 'checked' : ''; ?>>
                  <label for="diet-med">
                      <span class="icon">🍇</span> 
                      <span class="diet-name">Mediterranean</span>
                  </label>
-             </div>
-              
-            <div class="diet-option">
-                <input type="radio" name="diet" value="paleo" id="diet-paleo" required <?php echo ($selected_diet === 'paleo') ? 'checked' : ''; ?>>
-                <label for="diet-paleo">
-                     <span class="icon">🥕</span> 
-                     <span class="diet-name">Paleo</span>
-                </label>
             </div>
 
             <div class="diet-option">
@@ -87,15 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label for="diet-vegan">
                      <span class="icon">💚</span> 
                      <span class="diet-name">Vegan</span>
-                </label>
-            </div>
-
-            <div class="diet-option">
-                <input type="radio" name="diet" value="vegetarian" id="diet-vegetarian" required <?php echo ($selected_diet === 'vegetarian') ? 'checked' : ''; ?>>
-                <label for="diet-vegetarian">
-                    <span class="icon">🥦</span> 
-                    <span class="diet-name">Vegetarian</span>
-                </label>
+                 </label>
             </div>
 
         </div> 

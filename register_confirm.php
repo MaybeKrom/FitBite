@@ -6,17 +6,14 @@ if (!isset($conn) || $conn->connect_error) {
     die("Database configuration error. Cannot complete registration."); 
 }
 
+// --- Required keys from Steps 1, 2, 3 ONLY ---
 $required_keys = [
     'register_step1_name',
     'register_step1_email',
     'register_step1_hashed_password',
     'register_step2_diet',
-    'register_step3_exclusions',
-    'register_step4_gender',
-    'register_step4_height',
-    'register_step4_weight',
-    'register_step4_age',
-    'register_step4_activity'
+    'register_step3_exclusions' 
+    // Removed step 4 keys
 ];
 
 $all_keys_present = true;
@@ -32,35 +29,29 @@ if (!$all_keys_present) {
     exit();
 }
 
+// --- Retrieve only needed data ---
 $name = $_SESSION['register_step1_name'];
 $email = $_SESSION['register_step1_email'];
 $hashed_password = $_SESSION['register_step1_hashed_password']; 
 $diet = $_SESSION['register_step2_diet'];
 $food_exclusions = $_SESSION['register_step3_exclusions']; 
-$gender = $_SESSION['register_step4_gender'];
-$height = $_SESSION['register_step4_height']; 
-$weight = $_SESSION['register_step4_weight']; 
-$age = $_SESSION['register_step4_age'];       
-$activity = $_SESSION['register_step4_activity'];
+// Removed step 4 variables
 
+// --- Sanitize needed data ---
 $name_sql = $conn->real_escape_string($name);
 $email_sql = $conn->real_escape_string($email);
 $hashed_password_sql = $conn->real_escape_string($hashed_password); 
 $diet_sql = $conn->real_escape_string($diet);
 $food_exclusions_sql = $conn->real_escape_string($food_exclusions);
-$gender_sql = $conn->real_escape_string($gender);
-$activity_sql = $conn->real_escape_string($activity);
-$age_sql = (int)$age;
-$height_sql = (float)$height;
-$weight_sql = (float)$weight;
+// Removed step 4 sql variables
 
 $message = ''; 
 $success = false; 
 
-$sql = "INSERT INTO users (name, email, password, gender, age, weight, height, diet, food_exclusions, activity)
-        VALUES ('{$name_sql}', '{$email_sql}', '{$hashed_password_sql}', '{$gender_sql}', 
-                {$age_sql}, {$weight_sql}, {$height_sql}, 
-                '{$diet_sql}', '{$food_exclusions_sql}', '{$activity_sql}')";
+// --- MODIFIED INSERT QUERY ---
+// Removed gender, age, weight, height, activity columns and their values
+$sql = "INSERT INTO users (name, email, password, diet, food_exclusions) 
+        VALUES ('{$name_sql}', '{$email_sql}', '{$hashed_password_sql}', '{$diet_sql}', '{$food_exclusions_sql}')";
 
 if ($conn->query($sql) === TRUE) {
     $message = "Registration Completed! You can now login."; 
@@ -70,7 +61,7 @@ if ($conn->query($sql) === TRUE) {
     if ($conn->errno == 1062) { 
          $message = "Error: This email address is already registered. Please use a different email or login.";
     } else {
-         $message = "Error: Could not complete registration due to a database issue (" . $conn->errno.")"; // Added error number hint
+         $message = "Error: Could not complete registration due to a database issue (" . $conn->errno.")"; 
     }
     $success = false;
 }
@@ -101,7 +92,7 @@ $conn->close();
         echo '<p class="message ' . $message_class . '">' . htmlspecialchars($message) . '</p>'; 
 
         if ($success) {
-            echo '<div class="form-footer-link"><a href="login.php" class="btn btn-primary">Login Here</a></div>'; // Styled button
+            echo '<div class="form-footer-link"><a href="login.php" class="btn btn-primary">Login Here</a></div>';
         } else {
              echo '<div class="form-footer-link"><a href="register.php">Try Registration Again</a></div>';
         }

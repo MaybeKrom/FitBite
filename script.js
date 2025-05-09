@@ -35,4 +35,5 @@ document.addEventListener('DOMContentLoaded', function() {
     setupPasswordToggle('togglePassword', 'password'); 
     setupPasswordToggle('toggleConfirmPassword', 'confirm_password'); 
 
+
 });
